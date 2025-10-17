@@ -122,7 +122,29 @@ p {
   <img src="imagen/12.jpg" class="slide" alt="Imagen 12" />
 </div>
 <div class="flores-fondo"></div>
+<script>
+    // Crea flores animadas en el fondo
+    const fondo = document.querySelector('.flores-fondo');
+    const imagenes = [
+        'img/corazon.webp',
+        'img/gerberas.webp',
+        'img/lirio.webp'
+    ];
 
+    function crearFlorAnimada() {
+        const flor = document.createElement('img');
+        flor.src = imagenes[Math.floor(Math.random() * imagenes.length)];
+        flor.classList.add('flor');
+        flor.style.left = Math.random() * 100 + 'vw';
+        flor.style.animationDuration = (8 + Math.random() * 5) + 's';
+        flor.style.width = flor.style.height = (30 + Math.random() * 30) + 'px';
+        fondo.appendChild(flor);
+        setTimeout(() => flor.remove(), 15000);
+    }
+
+    setInterval(crearFlorAnimada, 800);
+</script>
+  
 <p> Estoy orgulloso de ti mi amor, por cada logro que vas teniendo <br> 
   y cada dia estare ahi contigo para apoyarte en todo, recuerda que somos<br>
   un equipo y nunca te dejare solita mi vida, y ahorita que estas dando <br>
@@ -210,3 +232,4 @@ setInterval(crearFlorAnimada, 800);
 </script>
 </body>
 </html>
+
