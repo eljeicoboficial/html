@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maestra</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: pink;
+    text-align: center;
+    margin: 0; padding: 0;
+  }
+  #bienvenida {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background-color: pink;
+    display: flex; justify-content:center; align-items:center;
+    z-index: 1000;
+  }
+  .carta {
+    background: white; padding: 40px; border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  }
+  .carta h1 {
+    color: #d63384;
+  }
+  .carta button {
+    background-color: #d63384; color: white; border:none;
+    padding: 15px 30px; font-size: 18px; border-radius:10px;
+    cursor: pointer;
+  }
+  .slider {
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+    height: 700px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  .slide {
+    display: none;
+    position: absolute;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .slide.active {
+    display: block;
+  }
+  /* Títulos */
+h1 {
+    font-size: 45px;
+    color: #e60073;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #8800cc;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 30px;
+    color: #f80505;
+    margin-bottom: 20px;
+}
+.flores-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.flor {
+    position: absolute;
+    opacity: 0.8;
+    animation: flotar 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+  <h1>❤️❤️❤️PARA LA MAESTRA MÁS HERMOSA DEL MUNDO❤️❤️❤️...!!!!</h1>
+  <h2>❤️❤️❤️ERES UN GRAN EJEMPLO A SEGUIR MI REINA HERMOSA❤️❤️❤️</h2>
+
+<body>
+
+<div id="bienvenida">
+  <div class="carta">
+    <h1>💌 Abre esta cartita 💌</h1>
+    <button onclick="abrirCarta()">Abrir</button>
+  </div>
+</div>
+
+<div class="slider" style="display:none;">
+  <img src="imagen/1.jpg" class="slide active" alt="Imagen 1" />
+  <img src="imagen/2.jpg" class="slide" alt="Imagen 2" />
+  <img src="imagen/3.jpg" class="slide" alt="Imagen 3" />
+  <img src="imagen/4.jpg" class="slide" alt="Imagen 4" />
+  <img src="imagen/5.jpg" class="slide" alt="Imagen 5" />
+  <img src="imagen/6.jpg" class="slide" alt="Imagen 6" />
+  <img src="imagen/7.jpg" class="slide" alt="Imagen 7" />
+  <img src="imagen/8.jpg" class="slide" alt="Imagen 8" />
+  <img src="imagen/9.jpg" class="slide" alt="Imagen 9" />
+  <img src="imagen/10.jpg" class="slide" alt="Imagen 10" />
+  <img src="imagen/11.jpg" class="slide" alt="Imagen 11" />
+  <img src="imagen/12.jpg" class="slide" alt="Imagen 12" />
+</div>
+<div class="flores-fondo"></div>
+
+<p> Estoy orgulloso de ti mi amor, por cada logro que vas teniendo <br> 
+  y cada dia estare ahi contigo para apoyarte en todo, recuerda que somos<br>
+  un equipo y nunca te dejare solita mi vida, y ahorita que estas dando <br>
+  clases a tus niños como siempre lo soñast, esos niños te van a tener<br>
+  un cariño muy bonito por que tu naciste para dar cariño a los niños y en<br>
+  tus ojitos lo demuestran mi amor, sigue asi mi vida, ❤️TE AMOOO MUCHOO<BR>
+  MI MUÑEQUITA HERMOSA ❤️
+</p>
+<audio id="audioPlayer" loop>
+  <source src="audio/Gracias a ti Maestra.mp3" type="audio/mp3" />
+  Tu navegador no soporta audio.
+</audio>
+
+<button id="controlButton" style="display:none;" onclick="playPause()">Reproducir</button>
+
+<script>
+  const bienvenida = document.getElementById('bienvenida');
+  const slider = document.querySelector('.slider');
+  const audio = document.getElementById('audioPlayer');
+  const controlButton = document.getElementById('controlButton');
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  let intervalId;
+
+  const fondo = document.querySelector('.flores-fondo');
+const imagenesFlores = [
+  'img/corazon.webp',
+  'img/gerberas.webp',
+  'img/lirio.webp'
+];
+
+function crearFlorAnimada() {
+  const flor = document.createElement('img');
+  flor.src = imagenesFlores[Math.floor(Math.random() * imagenesFlores.length)];
+  flor.classList.add('flor');
+  flor.style.left = Math.random() * 100 + 'vw';
+  flor.style.animationDuration = (8 + Math.random() * 5) + 's';
+  flor.style.width = flor.style.height = (30 + Math.random() * 30) + 'px';
+  fondo.appendChild(flor);
+
+  setTimeout(() => {
+    flor.remove();
+  }, 15000);
+}
+
+setInterval(crearFlorAnimada, 800);
+
+  function abrirCarta() {
+    bienvenida.style.display = 'none';
+    slider.style.display = 'block';
+    controlButton.style.display = 'inline-block';
+    audio.play();
+    startSlider();
+    controlButton.textContent = 'Pausar';
+  }
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+
+  function startSlider() {
+    if (!intervalId) {
+      intervalId = setInterval(showNextSlide, 4000);
+    }
+  }
+
+  function stopSlider() {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  function playPause() {
+    if (audio.paused) {
+      audio.play();
+      startSlider();
+      controlButton.textContent = 'Pausar';
+    } else {
+      audio.pause();
+      stopSlider();
+      controlButton.textContent = 'Reproducir';
+    }
+  }
+</script>
+</body>
+</html>
