@@ -131,17 +131,6 @@ p {
         'img/lirio.webp'
     ];
 
-    function crearFlorAnimada() {
-        const flor = document.createElement('img');
-        flor.src = imagenes[Math.floor(Math.random() * imagenes.length)];
-        flor.classList.add('flor');
-        flor.style.left = Math.random() * 100 + 'vw';
-        flor.style.animationDuration = (8 + Math.random() * 5) + 's';
-        flor.style.width = flor.style.height = (30 + Math.random() * 30) + 'px';
-        fondo.appendChild(flor);
-        setTimeout(() => flor.remove(), 15000);
-    }
-
     setInterval(crearFlorAnimada, 800);
 </script>
   
@@ -232,5 +221,6 @@ setInterval(crearFlorAnimada, 800);
 </script>
 </body>
 </html>
+
 
 
